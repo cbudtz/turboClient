@@ -16,6 +16,11 @@ public class KeyPressData implements Serializable{
 		this.keys = keys;
 	}
 
+	public KeyPressData() {
+		keys = new ArrayList<>();
+		sessionID = Long.MIN_VALUE;
+	}
+
 	public long getSessionID() {
 		return sessionID;
 	}

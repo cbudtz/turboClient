@@ -4,6 +4,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.io.OutputStream;
 import java.net.Socket;
+import java.util.ArrayList;
 
 import connectionHandler.KeyPressData;
 
@@ -14,10 +15,10 @@ public class TestSendData {
 			s = new Socket("localhost", 5151);
 			OutputStream os = s.getOutputStream();
 			ObjectOutputStream oos = new ObjectOutputStream(os);
-			KeyPressData kpd = new KeyPressData();
-			kpd.keys.add('e');
+			ArrayList<Character> keys = new ArrayList<Character>();
+			keys.add('t');
+			KeyPressData kpd = new KeyPressData(Long.MIN_VALUE, keys);
 			oos.writeObject(kpd);
-			Thread.sleep(1000);
 			ObjectInputStream ois = new ObjectInputStream(s.getInputStream());
 			System.out.println(ois.readObject());
 
