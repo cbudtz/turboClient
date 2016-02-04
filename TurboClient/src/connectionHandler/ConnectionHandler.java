@@ -8,9 +8,10 @@ import java.net.Socket;
 import java.net.UnknownHostException;
 
 public class ConnectionHandler{
-	Socket s = null;
+	private Socket s = null;
 	private KeyPressTransmitter kpt;
 	private GameStateReceiver gsr;
+	private String host;
 
 	public ConnectionHandler() throws UnknownHostException, IOException{
 		init();
@@ -19,6 +20,7 @@ public class ConnectionHandler{
 
 	private void init() throws UnknownHostException, IOException {
 		s = new Socket("localhost", 5151);
+		s.set
 		kpt = new KeyPressTransmitter(new ObjectOutputStream(s.getOutputStream()));
 		gsr = new GameStateReceiver(s.getInputStream());
 		new Thread(gsr).start();
